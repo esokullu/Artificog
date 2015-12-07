@@ -4,7 +4,8 @@
     "Test_Data"  : "../Data/mnist_test.art",
     "GPU" : true,
     "Epochs" : 2,
-    "Learning_Rate": 0.004,
+    "Learning_Rate": 0.00165,
+    "Decay_Rate": 1.1,
     "Layers": [
       {
         "Type": "FC",
@@ -13,7 +14,22 @@
       },
       {
         "Type": "FC",
-        "Neurons_Count": 470,
+        "Neurons_Count": 1500,
+        "Function": "tanh"
+      },
+      {
+        "Type": "FC",
+        "Neurons_Count": 1000,
+        "Function": "tanh"
+      },
+      {
+        "Type": "FC",
+        "Neurons_Count": 500,
+        "Function": "tanh"
+      },
+      {
+        "Type": "FC",
+        "Neurons_Count": 100,
         "Function": "tanh"
       },
       {
