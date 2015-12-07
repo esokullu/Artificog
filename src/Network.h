@@ -23,35 +23,28 @@
  class Network
  {
  private:
- public:
  	double learning_rate;
+ 	double decay_rate;
  	std::vector<Layer> layers;
  	std::vector<Weight> weights;
  	void updateLayerParams(int, const mat,const mat);
-
  	string train_data_address;
  	string test_data_address;
  	std::vector<int> reference_labels;
-
  	int getData(string ,mat &,int &);
  	void reset();
-
 	void feedForward( mat  ,  int ); // or predict for data (single sample mini-batch learning)
 	void learn();
-
-	Network(){};
-	Network(string);
-	mat output_layer;
-
 	int current_target;
 	int current_prediction;
 	int missed_sample_count;
  	int trained_sample_count;
-
  	int epoch_count=0;
+ public:
+ 	Network(){};
+	Network(string);
+	mat output_layer;
  	void run();
-
- 	
 };
 
 
@@ -73,8 +66,8 @@ Network::Network(string file_address)
 	auto network_json = json::parse(network_json_str);
 	this->train_data_address = network_json["Network"]["Train_Data"].get<std::string>();
 	this->test_data_address = network_json["Network"]["Test_Data"].get<std::string>();
-
     this->learning_rate= network_json["Network"]["Learning_Rate"]; // as a double
+    this->decay_rate= network_json["Network"]["Decay_Rate"]; // as a double
 
     this->epoch_count = network_json["Network"]["Epochs"]; 
 
@@ -281,7 +274,7 @@ void Network::run(){
 		reset();
 		cout << endl;
 
-		this->learning_rate = this->learning_rate / 1.1;
+		this->learning_rate = this->learning_rate / this->decay_rate;
 
 	}
 	cout << endl;
