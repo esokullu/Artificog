@@ -1,6 +1,6 @@
 # Artificog Machine Learning Framework
 [Artificog](http://artificog.com) is a simple Machine Learning Framework consists of implementation of various algorithms including **Deep Learning** methods.
-> Currently Artificog is under active development and other algorithms will be added.
+
 
 ## Building 
 In order to build the code you can use `cmake` ,
@@ -49,8 +49,6 @@ The data format that is used by **Artificog** is similar to [LIBSVM](https://www
 
 ## MNIST Example
 In order to convert MNIST standard data format to **Artificog** compatible data format you can use the script `Examples/MNIST/convert.sh`. It stores compatible dataset into `Data/` directory and now you can run `./artificog` inside `build` direectory (or `./artificog ../Network.json`)and see how it learns to classify MNIST dataset.
-
-> Note that **Artificog** is under active development so this repository is going to be updated regularly.
 
 For More information see : http://artificog.com
 
